@@ -1,0 +1,56 @@
+sudo find / -name docker.sock
+sudo chmod 777 /../../docker.sock
+
+(1)新建一个镜像：
+docker pull ubuntu:22.04 或者 
+docker run -it --name fsy  ubuntu:22.04  (fsy 指容器名称 docker run -it --name fsy  ubuntu:22.04 /bin/bash)
+
+(2)运行一个容器/运行一个指定名字的容器：
+docker run -it ubuntu:22.04    (没有指定容器名称)
+docker run -it --name fsy ubuntu:22.04    (新建一个指定名称为fsy的容器)
+
+查看所有的容器：
+docker ps -a
+
+
+(3)运行已经停止的容器：
+   (1) docker start 容器名称/ID   先启动
+（2）docker exec -it fsy /bin/bash   进入容器
+
+(4)退出容器：
+exit
+
+停下一个正在运行的名为fsy的容器：
+docker stop fsy
+
+(5)将一个容器保存为一个新的镜像：
+docker commit <容器名称或ID> <新镜像名称>:<标签>//docker commit fsy fsyimages
+docker save -o fsyimage.rar fsyimage
+docker load -i fsyimage.rar
+向容器中传文件/从容器中拷贝文件
+docker cp <本地文件路径> <容器名称或ID>:<容器内路径>
+docker cp <容器名称或ID>:<容器内路径> <本地文件夹路径>
+
+查看挂载信息：
+docker inspect container
+
+这将把宿主机的/path/on/host挂载到容器fsy1内的/path/in/container
+docker run -it --name fsy1 -v /主机目录路径:/容器目录路径 <镜像名称>
+nvidia-docker run --gpus all -it  --name  fsygpu1 fsyimage
+ docker run  -it  --name  fsy22 fsyimage
+
+>docker run -it --gpus all --runtime=nvidia --name shishigpu nvcr.io/nvidia/l4t-ml:r35.2.1-py3
+
+
+删除容器：
+docker rm 容器名称/ID
+删除镜像（先删除容器再删除镜像）：
+docker rmi 镜像名称/ID
+
+https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048
+https://blog.csdn.net/very_big_house/article/details/130643220
+https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-pytorch
+https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=M&O=D
+
+
+

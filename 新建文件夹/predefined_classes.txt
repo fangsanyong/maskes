@@ -1,0 +1,11 @@
+SG-fandouche         施工-翻斗车
+YW-dapeng            异物-大棚
+YW-caigangwa         异物-彩钢瓦
+YW-fangchengwang     异物-防尘网
+SG-diaoche           施工-吊车
+SG-wajueji           施工-挖掘机
+SG-shuinipengche     施工-水泥泵车
+SG-tadiao            施工-塔吊
+SG-tuituji           施工-推土机
+YW-dimo              异物-地膜
+SG-zhuangji          施工-桩机
